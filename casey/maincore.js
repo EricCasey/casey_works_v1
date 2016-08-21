@@ -1,65 +1,62 @@
- /// redirects to mobile page if width is == ?
- 
- <!--
-  if (screen.width <= 500) {
-    window.location = "http://www.casey.works/mobile";
-  }
-  //-->
 
-
-// If reloaded jumps to top. COOL!
-window.onbeforeunload = function(){
-	window.scrollTo(0,0);
-}
-
-
-// Overcomplitacted shit for the color changing line
-
-$(window).scroll(function() {
-		
-		//gets height of #theTop element for you
-	  var subNavHeight = $("#subNav").outerHeight()
-	  var scrollPoint = $("#theTop").height();
-		var scrollPoint2 = (scrollPoint + $("#section2").outerHeight()) - subNavHeight;	
-		var scrollPoint3 = (scrollPoint2 + $("#section3").outerHeight());
+$(document).ready(function(){  
 	
-    if ($(this).scrollTop() > scrollPoint && $(this).scrollTop() < scrollPoint2){
-			  $('#subNav').removeClass();
-        $('#subNav').addClass("sticky");
-				$('#subNav').addClass("red");
-    }
 	
-	 else if ($(this).scrollTop() > scrollPoint2 && $(this).scrollTop() < scrollPoint3){  
-		 		$('#subNav').removeClass();
-        $('#subNav').addClass("sticky");
-		    $('#subNav').addClass("green");
-    }
-	
-	 else if ($(this).scrollTop() > scrollPoint3 ){  
-		   $('#subNav').removeClass();
-        $('#subNav').addClass("sticky");
-		 		$('#subNav').addClass("blue");
-    }
+	///pre-loading screen
+	var readytoanimate = true
 
-    else {
-        $('#subNav').removeClass();
-    }
+  $(window).load(function() {
+    // Animate loader off screen
+    $(".se-pre-con").fadeOut("slow");;
+    readytoanimate = true;
+  });
+
+
+///// his is the jQuery animation for the top and bottom circles;
+
+  $(function(){
+    $('div.bottomcircle').delay(1000).fadeIn(100).animate({"left":"15%"},2000);
+});
+  $(function(){
+    $('div.topcircle').delay(1000).fadeIn(100).animate({"left":"15%"},2000);
 });
 
 
-///pre-loading screen
 
-var readytoanimate = true
+//start
 
-	$(window).load(function() {
-		// Animate loader off screen
-		$(".se-pre-con").fadeOut("slow");;
-		readytoanimate = true;
-	});
-	
-	
-	
-	//// Clock
+// Create cross browser requestAnimationFrame method:
+window.requestAnimationFrame = window.requestAnimationFrame
+ || window.mozRequestAnimationFrame
+ || window.webkitRequestAnimationFrame
+ || window.msRequestAnimationFrame
+ || function(f){setTimeout(f, 1000/60)}
+
+var topbubble = document.getElementById('topcircle')
+var bottombubble = document.getElementById('bottomcircle')
+var line = document.getElementById('line')
+
+function parallaxbubbles(){
+ var scrolltop = window.pageYOffset // get number of pixels document has scrolled vertically
+ topbubble.style.top = -scrolltop * 1.3 + 70 + 'px'
+ bottombubble.style.top = -scrolltop * 1.3 + 70 + 'px'
+ line.style.top = -scrolltop * 1.3 + 70 + 'px'
+}
+
+window.addEventListener('scroll', function(){ // on page scroll
+ requestAnimationFrame(parallaxbubbles) // call parallaxbubbles() on next available screen paint
+}, false)
+
+
+//end
+
+
+
+});
+
+
+
+  //// Clock
 
 function startTime() {
     var today = new Date();
@@ -75,6 +72,21 @@ function startTime() {
 function checkTime(i) {
     if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
     return i;
+}
+
+
+ /// redirects to mobile page if width is == ?
+
+ <!--
+  if (screen.width <= 500) {
+    window.location = "http://www.casey.works/mobile";
+  }
+  //-->
+
+
+// If reloaded jumps to top. COOL!
+window.onbeforeunload = function(){
+  window.scrollTo(0,0);
 }
 
 
