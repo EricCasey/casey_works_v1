@@ -1,6 +1,4 @@
-
 $(document).ready(function(){  
-	
 	
 	///pre-loading screen
 	var readytoanimate = true
@@ -17,6 +15,7 @@ $(document).ready(function(){
   $(function(){
     $('div.bottomcircle').delay(1000).fadeIn(100).animate({"left":"15%"},2000);
 });
+
   $(function(){
     $('div.topcircle').delay(1000).fadeIn(100).animate({"left":"15%"},2000);
 });
@@ -49,12 +48,7 @@ window.addEventListener('scroll', function(){ // on page scroll
 
 
 //end
-
-
-
 });
-
-
 
  /// redirects to mobile page if width is == ?
 
@@ -69,5 +63,4 @@ window.addEventListener('scroll', function(){ // on page scroll
 window.onbeforeunload = function(){
   window.scrollTo(0,0);
 }
-
 
