@@ -92,7 +92,7 @@ nav.navbutton {
   width: 70px;
   padding-top: 25px;
   font-family: sans;
-  float: right; 
+  float: right;
 }
 a.navbuttons {
   color: white;
@@ -232,38 +232,24 @@ img.para {
   top: 5px;
   display: block;
   margin-top: 145px;
-  height: 600px;
+  height: 440px;
   padding-top: 10px;
   overflow: hidden;
   z-index: 3;
   position: relative;
   border-bottom: 1px solid yellow;
-}
-div.viddiv {
-	width: 100%;
-	position: relative;
-}
-video {
-margin:0;
-padding: 0;
-position:absolute;
-}
-video.video {
-  top: 50%; left: 50%;
-  z-index: 1;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  transform: translate(-50%, -50%);
+  background: #003366;
 }
 div.portfolioArea {
 	width 90%;
-	max-width: 900px;
-	margin: 1% 4% ;
+	max-width: 1000px;
+	margin: auto auto;
 	height: 500px;
 	background: none;
-	position: absolute;
 	z-index: 22;
+}
+div.portfolioArea h2 {
+  z-index: 23;
 }
 div.projectArea {
  width: 45%;
@@ -304,6 +290,10 @@ img.device {
 	margin: 2% 3%;
 	position: relative;
 }
+a.portLink:link {
+  color: white;
+  text-decoration: none;
+}
 
 
 a.contactheading {
@@ -318,7 +308,7 @@ section.contact {
 	margin-bottom: 60px;
 }
 footer {
-  height:40px;
+  height: 40px;
   background-color: red;
   bottom: 0px;
   left: 0px;
@@ -376,15 +366,48 @@ li.footerfarright {
   margin-left: 10px;
 }
 div.statusContainer {
-  top: -20px;
-  z-index: 15;
-  background: #808080;
+  z-index: 16;
+  background: black;
   height: 40px;
   width: 300px;
   float: right;
-  margin-right: 2%
+  margin-right: 2%;
+  border: solid 4px green;
+  border-bottom:none;
+  border-top-right-radius:10px;
+  border-top-left-radius: 10px;
+  position: fixed;
+  bottom:0;
+  right:0;
+  font-family: Andale Mono;
+  text-align: center;
+  font-weight:bold;
 }
 
+/* Breakpoint handler ----------- */
+
+@media only screen and (max-width : 1024px) {
+
+div.projectArea {
+ margin: 1% auto 1% auto;
+ width: 375px;
+ height: 200px;
+}
+.section3 {
+  height: 710px;
+}
+}
+
+@media only screen and (max-width : 700px) {
+
+.navbutton {
+  font-size: 10px;
+}
+div.projectArea {
+  float:none;
+}
+
+}
 
 
 /* Smartphones (portrait and landscape) ----------- */
@@ -395,7 +418,6 @@ and (max-device-width : 480px) {
   li.navbutton {
     display: none;
   }
-
   div.twohalves {
     display: none;
   }
